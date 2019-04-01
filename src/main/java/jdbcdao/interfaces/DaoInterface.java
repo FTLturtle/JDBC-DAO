@@ -1,4 +1,4 @@
-package daos;
+package jdbcdao.interfaces;
 
 import java.util.List;
 

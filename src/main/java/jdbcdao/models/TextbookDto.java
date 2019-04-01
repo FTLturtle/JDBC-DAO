@@ -1,17 +1,17 @@
-package models;
+package jdbcdao.models;
 
-public class Textbook {
+import jdbcdao.interfaces.DtoInterface;
+
+import java.util.Objects;
+
+public class TextbookDto implements DtoInterface {
     private Long id;
     private String isbn;
     private String title;
     private String author;
     private Short year;
 
-    public Textbook(Long id, String title, String author, Short year) {
-        this(id, null, title, author, year);
-    }
-
-    public Textbook(Long id, String isbn, String title, String author, Short year) {
+    public TextbookDto(Long id, String isbn, String title, String author, Short year) {
         this.id = id;
         this.isbn = isbn;
         this.title = title;
@@ -19,14 +19,11 @@ public class Textbook {
         this.year = year;
     }
 
-    public Textbook() {
-    }
-
     public Long getId() {
         return id;
     }
 
-    public Textbook setId(Long id) {
+    public TextbookDto setId(Long id) {
         this.id = id;
         return this;
     }
@@ -35,7 +32,7 @@ public class Textbook {
         return isbn;
     }
 
-    public Textbook setIsbn(String isbn) {
+    public TextbookDto setIsbn(String isbn) {
         this.isbn = isbn;
         return this;
     }
@@ -44,7 +41,7 @@ public class Textbook {
         return title;
     }
 
-    public Textbook setTitle(String title) {
+    public TextbookDto setTitle(String title) {
         this.title = title;
         return this;
     }
@@ -53,7 +50,7 @@ public class Textbook {
         return author;
     }
 
-    public Textbook setAuthor(String author) {
+    public TextbookDto setAuthor(String author) {
         this.author = author;
         return this;
     }
@@ -62,19 +59,33 @@ public class Textbook {
         return year;
     }
 
-    public Textbook setYear(Short year) {
+    public TextbookDto setYear(Short year) {
         this.year = year;
         return this;
     }
 
     @Override
     public String toString() {
-        return "Textbook{" +
+        return "TextbookDto{" +
                 "id=" + id +
                 ", isbn='" + isbn + '\'' +
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", year=" + year +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        TextbookDto that = (TextbookDto) o;
+
+        if (!Objects.equals(id, that.id)) return false;
+        if (!Objects.equals(isbn, that.isbn)) return false;
+        if (!Objects.equals(title, that.title)) return false;
+        if (!Objects.equals(author, that.author)) return false;
+        return Objects.equals(year, that.year);
     }
 }

@@ -48,7 +48,7 @@ These classes should include:
 4. A concrete DTO class that implements the interface.
 
 ## Run the App
-Create an App runner class to run each CRUD operation against your DAO
+Create an App jdbcdao.runner class to run each CRUD operation against your DAO
 
 * findById()
 * findAll()
