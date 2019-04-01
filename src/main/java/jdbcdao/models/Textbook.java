@@ -4,14 +4,14 @@ import jdbcdao.interfaces.DtoInterface;
 
 import java.util.Objects;
 
-public class TextbookDto implements DtoInterface {
+public class Textbook implements DtoInterface {
     private Long id;
     private String isbn;
     private String title;
     private String author;
     private Short year;
 
-    public TextbookDto(Long id, String isbn, String title, String author, Short year) {
+    public Textbook(Long id, String isbn, String title, String author, Short year) {
         this.id = id;
         this.isbn = isbn;
         this.title = title;
@@ -23,7 +23,7 @@ public class TextbookDto implements DtoInterface {
         return id;
     }
 
-    public TextbookDto setId(Long id) {
+    public Textbook setId(Long id) {
         this.id = id;
         return this;
     }
@@ -32,7 +32,7 @@ public class TextbookDto implements DtoInterface {
         return isbn;
     }
 
-    public TextbookDto setIsbn(String isbn) {
+    public Textbook setIsbn(String isbn) {
         this.isbn = isbn;
         return this;
     }
@@ -41,7 +41,7 @@ public class TextbookDto implements DtoInterface {
         return title;
     }
 
-    public TextbookDto setTitle(String title) {
+    public Textbook setTitle(String title) {
         this.title = title;
         return this;
     }
@@ -50,7 +50,7 @@ public class TextbookDto implements DtoInterface {
         return author;
     }
 
-    public TextbookDto setAuthor(String author) {
+    public Textbook setAuthor(String author) {
         this.author = author;
         return this;
     }
@@ -59,14 +59,14 @@ public class TextbookDto implements DtoInterface {
         return year;
     }
 
-    public TextbookDto setYear(Short year) {
+    public Textbook setYear(Short year) {
         this.year = year;
         return this;
     }
 
     @Override
     public String toString() {
-        return "TextbookDto{" +
+        return "Textbook{" +
                 "id=" + id +
                 ", isbn='" + isbn + '\'' +
                 ", title='" + title + '\'' +
@@ -80,7 +80,7 @@ public class TextbookDto implements DtoInterface {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TextbookDto that = (TextbookDto) o;
+        Textbook that = (Textbook) o;
 
         if (!Objects.equals(id, that.id)) return false;
         if (!Objects.equals(isbn, that.isbn)) return false;

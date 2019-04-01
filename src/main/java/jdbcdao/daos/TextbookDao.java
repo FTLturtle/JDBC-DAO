@@ -1,14 +1,14 @@
 package jdbcdao.daos;
 
 import jdbcdao.interfaces.DaoInterface;
-import jdbcdao.models.TextbookDto;
+import jdbcdao.models.Textbook;
 import jdbcdao.utilities.ConnectionFactory;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TextbookDao implements DaoInterface<TextbookDto> {
+public class TextbookDao implements DaoInterface<Textbook> {
     private final String dataTable;
     private final ConnectionFactory connectionFactory;
 
@@ -17,8 +17,8 @@ public class TextbookDao implements DaoInterface<TextbookDto> {
         this.connectionFactory = connectionFactory;
     }
 
-    public TextbookDto findById(Long id) {
-        TextbookDto result = null;
+    public Textbook findById(Long id) {
+        Textbook result = null;
         try (Connection connection = connectionFactory.getConnection()){
             Statement stmt = connection.createStatement();
             ResultSet resultSet = stmt.executeQuery("SELECT * FROM " + dataTable + " WHERE id=" + id);
@@ -31,8 +31,8 @@ public class TextbookDao implements DaoInterface<TextbookDto> {
         return result;
     }
 
-    public List<TextbookDto> findAll() {
-        List<TextbookDto> result = new ArrayList<>();
+    public List<Textbook> findAll() {
+        List<Textbook> result = new ArrayList<>();
         try (Connection connection = connectionFactory.getConnection()){
             Statement stmt = connection.createStatement();
             ResultSet resultSet = stmt.executeQuery("SELECT * FROM " + dataTable);
@@ -45,15 +45,15 @@ public class TextbookDao implements DaoInterface<TextbookDto> {
         return result;
     }
 
-    private TextbookDto extractTextbookFromResultSet(ResultSet resultSet) throws SQLException {
-        return new TextbookDto(resultSet.getLong("id"),
+    private Textbook extractTextbookFromResultSet(ResultSet resultSet) throws SQLException {
+        return new Textbook(resultSet.getLong("id"),
                 resultSet.getString("isbn"),
                 resultSet.getString("title"),
                 resultSet.getString("author"),
                 resultSet.getShort("publication_year"));
     }
 
-    public Boolean update(TextbookDto dto) {
+    public Boolean update(Textbook dto) {
         boolean result = false;
         try (Connection connection = connectionFactory.getConnection()){
             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE " + dataTable + " SET isbn = ?, title = ?, author = ?, publication_year = ? WHERE id = ?;");
@@ -72,7 +72,7 @@ public class TextbookDao implements DaoInterface<TextbookDto> {
         return result;
     }
 
-    public Boolean create(TextbookDto dto) {
+    public Boolean create(Textbook dto) {
         boolean result = false;
         try (Connection connection = connectionFactory.getConnection()){
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO " + dataTable + " (id, isbn, title, author, publication_year) VALUES (?, ?, ?, ?, ?);");

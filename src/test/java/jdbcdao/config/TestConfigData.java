@@ -1,6 +1,6 @@
 package jdbcdao.config;
 
-public class TestConfigData {
+public abstract class TestConfigData {
     public static final String url = "jdbc:mysql://localhost:3306";
     public static final String user = "jdbcuser";
     public static final String pass = "jdbcpassword";
